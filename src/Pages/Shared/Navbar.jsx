@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
    let [open, setOpen] = useState(false);
 
-   let Links = [
+   const Links = [
       { name: "HOME", link: "/" },
       { name: "SERVICE", link: "/" },
       { name: "ABOUT", link: "/" },
@@ -43,7 +43,7 @@ const Navbar = () => {
                         </Link>
                      </li>
                   ))}
-                  <button>Get Started</button>
+                  <button className="btn btn-secondary">Get Started</button>
                </ul>
             </div>
          </div>
