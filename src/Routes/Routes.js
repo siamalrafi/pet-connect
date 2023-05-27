@@ -1,3 +1,4 @@
+import Login from "../Pages/Auth/Login";
 import DisplayError from "../Pages/Extra/DisplayError";
 import Home from "../Pages/Home/Home";
 
@@ -7,12 +8,16 @@ const { default: Main } = require("../Layout/Main/Main");
 const router = createBrowserRouter([
    {
       path: "/",
-      element: <Main></Main>,
-      errorElement: <DisplayError></DisplayError>,
+      element: <Main/>,
+      errorElement: <DisplayError/>,
       children: [
          {
             path: "/",
             element: <Home></Home>,
+         },
+         {
+            path: "/login",
+            element: <Login />,
          },
       ],
    },
