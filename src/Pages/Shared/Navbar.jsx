@@ -43,7 +43,9 @@ const Navbar = () => {
                         </Link>
                      </li>
                   ))}
-                  <button className="btn btn-secondary">Get Started</button>
+                  <Link to={"/login"}>
+                     <button className="btn btn-red">Login</button>
+                  </Link>
                </ul>
             </div>
          </div>
