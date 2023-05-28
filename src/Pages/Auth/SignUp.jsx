@@ -28,11 +28,13 @@ const SignUp = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            // Setting data in localStorage
-            const token = data?.result?.token;
-            localStorage.setItem("token", token);
-            toast.success(`${data?.result?.user?.name}, You signed up.`);
-            console.log(data.result.user.name);
+            if (data?.error) {
+               toast.error(`${data.error}`);
+            } else {
+               const token = data?.result?.token;
+               localStorage.setItem("token", token);
+               toast.success(`${data?.result?.user?.name}, You signed up.`);
+            }
          });
    };
 

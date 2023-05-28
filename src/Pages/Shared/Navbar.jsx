@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CONTEXT } from "../../Context/MainContext";
 
 const Navbar = () => {
+   const { MUser } = useContext(CONTEXT);
+
+   console.log(MUser);
+
    let [open, setOpen] = useState(false);
 
    const Links = [
