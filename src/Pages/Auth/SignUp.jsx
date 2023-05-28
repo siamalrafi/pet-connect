@@ -2,11 +2,10 @@ import React from "react";
 import Lottie from "lottie-react";
 import loginAnimataion from "../../assets/Animation/LoginAnimaion.json";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
-   
-  
-  const handleSubmit = (event) => {
+   const handleSubmit = (event) => {
       event.preventDefault();
 
       const form = event.target;
@@ -14,7 +13,27 @@ const SignUp = () => {
       const email = form.email.value;
       const password = form.password.value;
 
-      console.log("handleSubmit", name, email, password);
+      const userInfo = {
+         name,
+         email,
+         password,
+      };
+
+      fetch("http://localhost:5000/api/v1/users/signup", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(userInfo),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            // Setting data in localStorage
+            const token = data?.result?.token;
+            localStorage.setItem("token", token);
+            toast.success(`${data?.result?.user?.name}, You signed up.`);
+            console.log(data.result.user.name);
+         });
    };
 
    return (
