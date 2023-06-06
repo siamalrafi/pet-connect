@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CONTEXT } from "../../Context/MainContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-   const { MUser } = useContext(CONTEXT);
-
-   console.log(MUser);
+   const { user } = useContext(CONTEXT);
+   const navigate = useNavigate();
+   console.log("user", user);
 
    let [open, setOpen] = useState(false);
 
@@ -17,6 +18,11 @@ const Navbar = () => {
       { name: "CONTACT", link: "/" },
    ];
 
+   const handleLogOut = () => {
+      localStorage.removeItem("token");
+      toast.success("You are logged out Successfully");
+      navigate("/login");
+   };
    return (
       <div>
          <div className="shadow-md w-full fixed top-0 left-0">
@@ -48,9 +54,20 @@ const Navbar = () => {
                         </Link>
                      </li>
                   ))}
-                  <Link to={"/login"}>
-                     <button className="btn btn-red">Login</button>
-                  </Link>
+
+                  {user ? (
+                     <>
+                        <button onClick={handleLogOut} className="btn text-red-600">
+                           LogOut
+                        </button>
+                     </>
+                  ) : (
+                     <>
+                        <Link to={"/login"}>
+                           <button className="btn text-green-600">Login</button>
+                        </Link>{" "}
+                     </>
+                  )}
                </ul>
             </div>
          </div>
