@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
+// create context ---
 export const CONTEXT = createContext();
 
 const UserContext = ({ children }) => {
@@ -21,7 +22,7 @@ const UserContext = ({ children }) => {
       user,
       setUser,
       loading,
-      // handleDark mode
+      // handleDark mode ---
    };
 
    return <CONTEXT.Provider value={authInfo}>{children}</CONTEXT.Provider>;
