@@ -21,7 +21,7 @@ const UserContext = ({ children }) => {
       user,
       setUser,
       loading,
-      // handleDark
+      // handleDark mode
    };
 
    return <CONTEXT.Provider value={authInfo}>{children}</CONTEXT.Provider>;
