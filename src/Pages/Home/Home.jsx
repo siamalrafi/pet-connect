@@ -12,8 +12,6 @@ import { CONTEXT } from "../../Context/MainContext";
 const Home = () => {
    const { name } = useContext(CONTEXT);
 
-   console.log(name, "nmae9049093409");
-
    return (
       <div>
          <Hero />
