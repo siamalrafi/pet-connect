@@ -12,7 +12,7 @@ import { CONTEXT } from "../../Context/MainContext";
 const Home = () => {
    const { name } = useContext(CONTEXT);
 
-   console.log("name from ", name);
+   console.log("name ", name);
    return (
       <div>
          <Hero />
